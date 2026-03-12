@@ -2,11 +2,14 @@
 <html lang="pt-br">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>EVOM</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -17,7 +20,7 @@
 
 <div class="login-box">
 
-<h2>EVOM</h2>
+<h2 class="login-title">EVOM</h2>
 
 <input type="text" id="user" placeholder="Usuário">
 <input type="password" id="pass" placeholder="Senha">
@@ -25,11 +28,14 @@
 <button onclick="logar()">Entrar</button>
 
 </div>
+
 </div>
 
 <!-- MENU LATERAL -->
 
 <div class="sidebar" id="sidebar">
+
+<div class="menu-title">EVOM</div>
 
 <a onclick="abrirAba('dashboard')">Inicio</a>
 <a onclick="abrirAba('download')">Download Bypass</a>
@@ -61,15 +67,20 @@
 
 <div class="card">
 
+<!-- LOGO -->
+
 <div class="dashboard-logo">
+
 <img src="logo.png" alt="EVOM">
+
 </div>
 
 <h3>EVOM REMOTE</h3>
 
-<p>Obrigado por ser um cliente EVOM!</p>
+<p>Obrigado por ser um cliente EVOM.</p>
 
-<p>
+<p class="info">
+Sistema exclusivo para clientes.
 Utilize o menu lateral para acessar downloads, tutoriais e funções.
 </p>
 
@@ -83,9 +94,11 @@ Utilize o menu lateral para acessar downloads, tutoriais e funções.
 
 <div class="card">
 
-<h3>DOWLOAD CONNECT EVOM</h3>
+<h3>DOWNLOAD CONNECT EVOM</h3>
 
-<p>CLIQUE ABAIXO PARA INSTALAR O BYPASS</p>
+<p class="desc">
+Clique no botão abaixo para instalar o bypass.
+</p>
 
 <a class="download-btn"
 href="https://www.mediafire.com/file/1elcyjbv19u6a96/EVOM+REMOTE.pem/file">
@@ -95,7 +108,7 @@ INJETAR CONNECT iOS
 </a>
 
 <p class="obs">
-(Permita instalação do perfil ao clicar)
+Permita a instalação do perfil ao clicar.
 </p>
 
 </div>
@@ -108,31 +121,33 @@ INJETAR CONNECT iOS
 
 <div class="card">
 
-<h3>Tutorial</h3>
+<h3>Tutorial de Instalação</h3>
 
 <div class="passo">
 <div class="numero">1</div>
-<div class="texto">Baixe o certificado</div>
+<div class="texto">
+Baixe o certificado.
+</div>
 </div>
 
 <div class="passo">
 <div class="numero">2</div>
 <div class="texto">
-Vá em Ajustes - Geral - Gestão de VPN e Dispositivo - Instale o Perfil
+Acesse Ajustes → Geral → Gestão de VPN e Dispositivo e instale o perfil.
 </div>
 </div>
 
 <div class="passo">
 <div class="numero">3</div>
 <div class="texto">
-Agora vá em Ajustes - Geral - Sobre - Certificados Confiáveis e permita o certificado
+Vá em Ajustes → Geral → Sobre → Certificados Confiáveis e permita o certificado.
 </div>
 </div>
 
 <div class="passo">
 <div class="numero">4</div>
 <div class="texto">
-Wi-Fi - Info - Configurar Proxy - Manual e coloque o servidor e porta
+Vá em Wi-Fi → Informações → Configurar Proxy → Manual e coloque o servidor e porta.
 </div>
 </div>
 
@@ -148,13 +163,18 @@ Wi-Fi - Info - Configurar Proxy - Manual e coloque o servidor e porta
 
 <h3>FUNÇÕES E SERVIDORES</h3>
 
-<ul>
-<li>SERVIDOR: 72.61.63.176</li>
+<div class="server-box">
 
-<h3>PORTAS FUNÇÕES</h3>
+<p><b>Servidor:</b> 72.61.63.176</p>
 
-<li>HS RAGE + ANTENA: 1000</li>
-<li>BYPASS HISTÓRICO: 2000</li>
+</div>
+
+<h4>Portas</h4>
+
+<ul class="portas">
+
+<li>HS RAGE + ANTENA → 1000</li>
+<li>BYPASS HISTÓRICO → 2000</li>
 
 </ul>
 
