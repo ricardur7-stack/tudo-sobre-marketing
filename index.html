@@ -4,201 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>EVOM</title>
 
-<style>
-
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#070707;
-color:white;
-}
-
-/* LOGIN */
-
-.login{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.login-box{
-background:#0b0b0b;
-padding:40px;
-border-radius:10px;
-border:1px solid red;
-box-shadow:0 0 20px red;
-text-align:center;
-width:280px;
-}
-
-.login-box h2{
-color:#ff2b2b;
-margin-bottom:20px;
-}
-
-/* INPUT */
-
-input{
-width:100%;
-padding:10px;
-margin:10px 0;
-border:none;
-border-radius:5px;
-background:#111;
-color:white;
-}
-
-/* BOTÃO */
-
-button{
-width:100%;
-padding:12px;
-background:#ff0000;
-border:none;
-color:white;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* PAINEL */
-
-.painel{
-display:none;
-}
-
-/* MENU */
-
-.sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:#0b0b0b;
-border-right:1px solid red;
-transition:0.3s;
-padding-top:60px;
-z-index:1000;
-}
-
-.sidebar a{
-display:block;
-padding:15px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid #111;
-cursor:pointer;
-}
-
-.sidebar a:hover{
-background:#1a0000;
-}
-
-.sidebar.ativo{
-left:0;
-}
-
-/* TOPO */
-
-.topo{
-display:flex;
-align-items:center;
-padding:20px;
-border-bottom:1px solid rgba(255,0,0,0.2);
-}
-
-.menu-btn{
-font-size:26px;
-cursor:pointer;
-margin-right:15px;
-}
-
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#ff2b2b;
-text-shadow:0 0 15px #ff0000;
-}
-
-/* CONTAINER */
-
-.container{
-max-width:800px;
-margin:auto;
-padding:20px;
-}
-
-/* CARD */
-
-.card{
-background:#0b0b0b;
-border-radius:15px;
-padding:25px;
-border:1px solid rgba(255,0,0,0.2);
-box-shadow:0 0 20px rgba(255,0,0,0.2);
-}
-
-/* TITULO */
-
-.titulo{
-font-size:20px;
-letter-spacing:2px;
-color:#ff3b3b;
-text-shadow:0 0 10px #ff0000;
-margin-bottom:20px;
-}
-
-/* SEÇÕES */
-
-.section{
-display:none;
-}
-
-.section.ativa{
-display:block;
-}
-
-/* PASSOS */
-
-.passo{
-display:flex;
-margin-bottom:20px;
-}
-
-.numero{
-min-width:35px;
-height:35px;
-border-radius:50%;
-background:#140000;
-border:1px solid #ff2b2b;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#ff2b2b;
-margin-right:15px;
-}
-
-.texto{
-line-height:1.5;
-}
-
-/* DOWNLOAD */
-
-.download-btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 20px;
-background:#ff0000;
-border-radius:6px;
-text-decoration:none;
-color:white;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -219,14 +27,14 @@ color:white;
 </div>
 </div>
 
-<!-- MENU -->
+<!-- MENU LATERAL -->
 
-<div class="sidebar" id="menu">
+<div class="sidebar" id="sidebar">
 
-<a onclick="mostrar('dashboard')">Dashboard</a>
-<a onclick="mostrar('download')">Download</a>
-<a onclick="mostrar('tutoriais')">Tutoriais</a>
-<a onclick="mostrar('funcoes')">Funções</a>
+<a onclick="abrirAba('dashboard')">Dashboard</a>
+<a onclick="abrirAba('download')">Download</a>
+<a onclick="abrirAba('tutorial')">Tutoriais</a>
+<a onclick="abrirAba('funcoes')">Funções</a>
 <a onclick="logout()">Sair</a>
 
 </div>
@@ -236,7 +44,7 @@ color:white;
 <div class="painel" id="painel">
 
 <div class="topo">
-<div class="menu-btn" onclick="abrirMenu()">☰</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 <div class="logo">EVOM</div>
 </div>
 
@@ -244,122 +52,89 @@ color:white;
 
 <!-- DASHBOARD -->
 
-<div id="dashboard" class="section ativa">
+<div class="aba ativa" id="dashboard">
 
 <div class="card">
 
-<div class="titulo">EVOM DASHBOARD</div>
-
-<p>Bem-vindo ao painel EVOM.</p>
-<p>Acesse o menu lateral para navegar.</p>
+<h3>EVOM Dashboard</h3>
+<p>Bem vindo ao painel EVOM.</p>
 
 </div>
+
 </div>
 
 <!-- DOWNLOAD -->
 
-<div id="download" class="section">
+<div class="aba" id="download">
 
 <div class="card">
 
-<div class="titulo">DOWNLOAD</div>
+<h3>Download Certificado</h3>
 
-<p>Baixe a versão mais recente:</p>
+<p>Baixe o certificado abaixo:</p>
 
-<a class="download-btn" href="#">Baixar EVOM</a>
+<a class="download-btn" href="COLOQUE_LINK_AQUI">
+Baixar Certificado
+</a>
+
+<p class="obs">
+(Substitua o link no arquivo HTML)
+</p>
 
 </div>
+
 </div>
 
-<!-- TUTORIAIS -->
+<!-- TUTORIAL -->
 
-<div id="tutoriais" class="section">
+<div class="aba" id="tutorial">
 
 <div class="card">
 
-<div class="titulo">TUTORIAL</div>
+<h3>Tutorial</h3>
 
 <div class="passo">
 <div class="numero">1</div>
-<div class="texto">Feche o jogo completamente</div>
+<div class="texto">Baixe o certificado</div>
 </div>
 
 <div class="passo">
 <div class="numero">2</div>
-<div class="texto">Abra EVOM</div>
+<div class="texto">Instale no dispositivo</div>
 </div>
 
 <div class="passo">
 <div class="numero">3</div>
-<div class="texto">Execute o bypass</div>
+<div class="texto">Abra o EVOM</div>
 </div>
 
 </div>
+
 </div>
 
 <!-- FUNÇÕES -->
 
-<div id="funcoes" class="section">
+<div class="aba" id="funcoes">
 
 <div class="card">
 
-<div class="titulo">FUNÇÕES</div>
-
-<p>Lista de funções disponíveis:</p>
+<h3>Funções</h3>
 
 <ul>
-<li>Aimbot</li>
-<li>ESP</li>
-<li>No recoil</li>
-<li>Bypass anti-ban</li>
+<li>Bypass</li>
+<li>Anti Ban</li>
+<li>Loader</li>
+<li>Certificado seguro</li>
 </ul>
 
 </div>
-</div>
 
 </div>
 
 </div>
+</div>
 
-<script>
-
-function logar(){
-
-let user=document.getElementById("user").value
-let pass=document.getElementById("pass").value
-
-if(user=="evom" && pass=="client"){
-
-document.getElementById("login").style.display="none"
-document.getElementById("painel").style.display="block"
-
-}else{
-alert("Login inválido")
-}
-
-}
-
-function abrirMenu(){
-document.getElementById("menu").classList.toggle("ativo")
-}
-
-function logout(){
-location.reload()
-}
-
-function mostrar(sec){
-
-let sections=document.querySelectorAll(".section")
-
-sections.forEach(s=>{
-s.classList.remove("ativa")
-})
-
-document.getElementById(sec).classList.add("ativa")
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
