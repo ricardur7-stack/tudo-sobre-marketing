@@ -51,33 +51,6 @@ display:none;
 
 /* MENU */
 
-.sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:#0b0b0b;
-border-right:1px solid red;
-transition:0.3s;
-padding-top:60px;
-z-index:1000;
-}
-
-.sidebar.ativo{
-left:0;
-}
-
-.sidebar a{
-display:block;
-padding:15px;
-border-bottom:1px solid #111;
-cursor:pointer;
-}
-
-.sidebar a:hover{
-background:#1a0000;
-}
 
 /* TOPO */
 
@@ -85,7 +58,67 @@ background:#1a0000;
 display:flex;
 align-items:center;
 padding:20px;
+border-bottom:1.sidebar{
+position:fixed;
+left:-260px;
+top:0;
+width:260px;
+height:100%;
+background:#0b0b0b;
+border-right:1px solid rgba(255,0,0,0.2);
+transition:0.3s;
+padding-top:25px;
+z-index:1000;
+box-shadow:0 0 30px rgba(255,0,0,0.15);
+}
+
+/* MENU ABERTO */
+
+.sidebar.ativo{
+left:0;
+}
+
+/* TITULO */
+
+.menu-header{
+font-size:20px;
+font-weight:bold;
+color:#ff2b2b;
+padding:20px;
+text-align:center;
+text-shadow:0 0 10px red;
 border-bottom:1px solid rgba(255,0,0,0.2);
+margin-bottom:10px;
+}
+
+/* ITEMS */
+
+.menu-item{
+display:flex;
+align-items:center;
+gap:12px;
+padding:14px 20px;
+margin:6px 12px;
+border-radius:10px;
+color:white;
+text-decoration:none;
+cursor:pointer;
+transition:0.2s;
+}
+
+/* HOVER */
+
+.menu-item:hover{
+background:#140000;
+box-shadow:0 0 10px rgba(255,0,0,0.2);
+}
+
+/* BOTÃO SAIR */
+
+.sair{
+margin-top:15px;
+color:#ff5555;
+}px solid rgba(255,0,0,0.2);
 }
 
 .menu-btn{
