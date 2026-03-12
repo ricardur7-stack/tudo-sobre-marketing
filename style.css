@@ -164,3 +164,41 @@ opacity:0.6;
 font-size:12px;
 margin-top:10px;
 }
+
+/* LISTA DO TUTORIAL */
+
+.tutorial-list{
+margin-top:15px;
+}
+
+/* PASSOS */
+
+.passo{
+display:flex;
+align-items:flex-start;
+margin-bottom:18px;
+}
+
+/* NUMERO */
+
+.numero{
+min-width:34px;
+height:34px;
+border-radius:50%;
+background:#140000;
+border:1px solid #ff2b2b;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#ff2b2b;
+margin-right:14px;
+font-weight:bold;
+box-shadow:0 0 8px rgba(255,0,0,0.5);
+}
+
+/* TEXTO */
+
+.texto{
+line-height:1.6;
+flex:1;
+}
