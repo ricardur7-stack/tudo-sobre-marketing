@@ -1,0 +1,166 @@
+body{
+margin:0;
+font-family:Arial;
+background:#070707;
+color:white;
+}
+
+/* LOGIN */
+
+.login{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-box{
+background:#0b0b0b;
+padding:40px;
+border-radius:10px;
+border:1px solid red;
+box-shadow:0 0 20px red;
+text-align:center;
+width:280px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:5px;
+background:#111;
+color:white;
+}
+
+button{
+width:100%;
+padding:12px;
+background:red;
+border:none;
+color:white;
+border-radius:5px;
+}
+
+/* PAINEL */
+
+.painel{
+display:none;
+}
+
+/* MENU */
+
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#0b0b0b;
+border-right:1px solid red;
+transition:0.3s;
+padding-top:60px;
+z-index:1000;
+}
+
+.sidebar.ativo{
+left:0;
+}
+
+.sidebar a{
+display:block;
+padding:15px;
+border-bottom:1px solid #111;
+cursor:pointer;
+}
+
+.sidebar a:hover{
+background:#1a0000;
+}
+
+/* TOPO */
+
+.topo{
+display:flex;
+align-items:center;
+padding:20px;
+border-bottom:1px solid rgba(255,0,0,0.2);
+}
+
+.menu-btn{
+font-size:25px;
+cursor:pointer;
+margin-right:15px;
+}
+
+.logo{
+font-size:26px;
+color:red;
+text-shadow:0 0 10px red;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+/* CARD */
+
+.card{
+background:#0b0b0b;
+padding:25px;
+border-radius:12px;
+border:1px solid rgba(255,0,0,0.2);
+box-shadow:0 0 15px rgba(255,0,0,0.2);
+}
+
+/* ABAS */
+
+.aba{
+display:none;
+}
+
+.aba.ativa{
+display:block;
+}
+
+/* PASSOS */
+
+.passo{
+display:flex;
+margin-bottom:15px;
+}
+
+.numero{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#140000;
+border:1px solid red;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-right:10px;
+}
+
+/* DOWNLOAD */
+
+.download-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:red;
+border-radius:6px;
+text-decoration:none;
+color:white;
+}
+
+.obs{
+opacity:0.6;
+font-size:12px;
+margin-top:10px;
+}
