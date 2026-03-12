@@ -156,95 +156,69 @@ box-shadow:0 0 15px rgba(255,0,0,0.2);
 .aba{
 display:none;
 }
-
-.aba.ativa{
-display:block;
+.sidebar{
+position:fixed;
+left:-260px;
+top:0;
+width:260px;
+height:100%;
+background:#0b0b0b;
+border-right:1px solid rgba(255,0,0,0.2);
+transition:0.3s;
+padding-top:20px;
+z-index:1000;
 }
 
-/* PASSOS */
-
-.passo{
-display:flex;
-margin-bottom:15px;
+.sidebar.ativo{
+left:0;
 }
 
-.numero{
-width:30px;
-height:30px;
-border-radius:50%;
-background:#140000;
-border:1px solid red;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-right:10px;
-}
-
-/* DOWNLOAD */
-
-.download-btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 20px;
-background:red;
-border-radius:6px;
-text-decoration:none;
-color:white;
-}
-
-.obs{
-opacity:0.6;
-font-size:12px;
-margin-top:10px;
-}
-
-/* LISTA DO TUTORIAL */
-
-.tutorial-list{
-margin-top:15px;
-}
-
-/* PASSOS */
-
-.passo{
-display:flex;
-align-items:flex-start;
-margin-bottom:18px;
-}
-
-/* NUMERO */
-
-.numero{
-min-width:34px;
-height:34px;
-border-radius:50%;
-background:#140000;
-border:1px solid #ff2b2b;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#ff2b2b;
-margin-right:14px;
+.menu-header{
+font-size:20px;
 font-weight:bold;
-box-shadow:0 0 8px rgba(255,0,0,0.5);
+color:#ff2b2b;
+padding:20px;
+text-align:center;
+border-bottom:1px solid rgba(255,0,0,0.2);
+margin-bottom:10px;
 }
 
-/* TEXTO */
-
-.texto{
-line-height:1.6;
-flex:1;
-}
-
-.icon{
-width:20px;
-height:20px;
-margin-right:10px;
-fill:#ff2b2b;
-flex-shrink:0;
-}
+/* ITEM */
 
 .menu-item{
 display:flex;
 align-items:center;
+gap:12px;
+padding:14px 18px;
+margin:6px 10px;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+/* HOVER */
+
+.menu-item:hover{
+background:#140000;
+}
+
+/* ICON */
+
+.icon{
+width:20px;
+height:20px;
+fill:#ff2b2b;
+flex-shrink:0;
+}
+
+/* TEXTO */
+
+.menu-item span{
+flex:1;
+}
+
+/* SAIR */
+
+.sair{
+color:#ff5555;
 }
