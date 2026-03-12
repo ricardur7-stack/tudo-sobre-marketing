@@ -6,7 +6,7 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-background:#0a0a0a;
+background:#050505;
 color:white;
 }
 
@@ -21,86 +21,98 @@ height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#0a0a0a;
-z-index:999;
+background:#050505;
+z-index:1000;
 }
 
 .login-box{
-background:#121212;
+background:#0f0f0f;
 padding:40px;
-border-radius:10px;
-width:300px;
+border-radius:12px;
+width:320px;
 text-align:center;
+box-shadow:0 0 25px rgba(255,0,0,0.25);
 }
 
 .login-box h2{
 margin-bottom:20px;
+color:#ff2b2b;
 }
 
 .login-box input{
 width:100%;
-padding:10px;
+padding:12px;
 margin:10px 0;
 border:none;
 border-radius:6px;
-background:#1f1f1f;
+background:#1b1b1b;
 color:white;
+}
+
+.login-box input:focus{
+outline:none;
+box-shadow:0 0 10px #ff2b2b;
 }
 
 .login-box button{
 width:100%;
-padding:10px;
+padding:12px;
 background:#ff2b2b;
 border:none;
 border-radius:6px;
 color:white;
 cursor:pointer;
+transition:0.2s;
 }
 
-/* SIDEBAR */
+.login-box button:hover{
+background:#ff0000;
+box-shadow:0 0 12px #ff2b2b;
+}
+
+/* MENU LATERAL */
 
 .sidebar{
 position:fixed;
-left:-220px;
+left:-230px;
 top:0;
-width:220px;
+width:230px;
 height:100%;
-background:#111;
+background:#0b0b0b;
 padding-top:60px;
 transition:0.3s;
-z-index:100;
-}
-
-.sidebar a{
-display:block;
-padding:15px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid #1f1f1f;
-cursor:pointer;
-}
-
-.sidebar a:hover{
-background:#1a1a1a;
+z-index:200;
+border-right:1px solid rgba(255,0,0,0.2);
 }
 
 .sidebar.ativo{
 left:0;
 }
 
-/* PAINEL */
-
-.painel{
-margin-left:0;
-transition:0.3s;
+.sidebar a{
+display:block;
+padding:15px 20px;
+color:#ccc;
+text-decoration:none;
+cursor:pointer;
+transition:0.2s;
 }
+
+.sidebar a:hover{
+background:#140000;
+color:#ff2b2b;
+padding-left:25px;
+}
+
+/* TOPO */
 
 .topo{
 height:60px;
-background:#111;
+background:#0b0b0b;
 display:flex;
 align-items:center;
 padding:0 20px;
+border-bottom:1px solid rgba(255,0,0,0.2);
 }
 
 .menu-btn{
@@ -111,6 +123,8 @@ margin-right:20px;
 
 .logo{
 font-weight:bold;
+color:#ff2b2b;
+letter-spacing:2px;
 }
 
 /* CONTAINER */
@@ -122,10 +136,21 @@ padding:30px;
 /* CARDS */
 
 .card{
-background:#141414;
-padding:25px;
+background:#0f0f0f;
+padding:30px;
 border-radius:10px;
-max-width:600px;
+max-width:650px;
+box-shadow:0 0 20px rgba(255,0,0,0.15);
+}
+
+/* DASHBOARD LOGO */
+
+.dashboard-logo{
+margin-bottom:15px;
+}
+
+.dashboard-logo img{
+width:80px;
 }
 
 /* ABAS */
@@ -138,118 +163,71 @@ display:none;
 display:block;
 }
 
-/* DOWNLOAD */
+/* BOTÃO DOWNLOAD */
 
 .download-btn{
 display:inline-block;
 margin-top:15px;
-padding:12px 20px;
+padding:14px 22px;
 background:#ff2b2b;
 color:white;
 text-decoration:none;
 border-radius:6px;
+font-weight:bold;
+transition:0.2s;
+}
+
+.download-btn:hover{
+background:#ff0000;
+box-shadow:0 0 15px #ff2b2b;
 }
 
 /* TUTORIAL */
 
 .passo{
 display:flex;
-align-items:center;
-margin-top:15px;
+align-items:flex-start;
+margin-top:18px;
+background:#121212;
+padding:12px;
+border-radius:6px;
 }
 
 .numero{
-width:30px;
+min-width:30px;
 height:30px;
 background:#ff2b2b;
 display:flex;
 align-items:center;
 justify-content:center;
 border-radius:50%;
-margin-right:10px;
+margin-right:12px;
+font-weight:bold;
 }
 
-/* FUNCOES */
+.texto{
+color:#ccc;
+}
+
+/* FUNÇÕES */
 
 ul{
-margin-top:10px;
+margin-top:15px;
 padding-left:20px;
 }
 
 li{
-margin-top:6px;
-}border:1px solid rgba(255,0,0,0.2);
-box-shadow:0 0 15px rgba(255,0,0,0.2);
+margin-top:8px;
+color:#ddd;
 }
 
-/* ABAS */
+/* SCROLLBAR */
 
-.aba{
-display:none;
-}
-.sidebar{
-position:fixed;
-left:-260px;
-top:0;
-width:260px;
-height:100%;
-background:#0b0b0b;
-border-right:1px solid rgba(255,0,0,0.2);
-transition:0.3s;
-padding-top:20px;
-z-index:1000;
+::-webkit-scrollbar{
+width:6px;
 }
 
-.sidebar.ativo{
-left:0;
-}
-
-.menu-header{
-font-size:20px;
-font-weight:bold;
-color:#ff2b2b;
-padding:20px;
-text-align:center;
-border-bottom:1px solid rgba(255,0,0,0.2);
-margin-bottom:10px;
-}
-
-/* ITEM */
-
-.menu-item{
-display:flex;
-align-items:center;
-gap:12px;
-padding:14px 18px;
-margin:6px 10px;
-border-radius:8px;
-cursor:pointer;
-transition:0.2s;
-}
-
-/* HOVER */
-
-.menu-item:hover{
-background:#140000;
-}
-
-/* ICON */
-
-.icon{
-width:20px;
-height:20px;
-fill:#ff2b2b;
-flex-shrink:0;
-}
-
-/* TEXTO */
-
-.menu-item span{
-flex:1;
-}
-
-/* SAIR */
-
-.sair{
-color:#ff5555;
+::-webkit-scrollbar-thumb{
+background:#ff2b2b;
+border-radius:10px;
 }
