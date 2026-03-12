@@ -235,3 +235,16 @@ box-shadow:0 0 8px rgba(255,0,0,0.5);
 line-height:1.6;
 flex:1;
 }
+
+.icon{
+width:20px;
+height:20px;
+margin-right:10px;
+fill:#ff2b2b;
+flex-shrink:0;
+}
+
+.menu-item{
+display:flex;
+align-items:center;
+}
