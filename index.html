@@ -1,127 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fatality Cheats</title>
+<title>EVOM</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
 body{
-background:#0b0b0b;
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#070707;
 color:white;
 }
 
-/* NAVBAR */
+/* LOGIN */
 
-nav{
+.login{
+height:100vh;
 display:flex;
-justify-content:space-between;
+justify-content:center;
 align-items:center;
-padding:20px 60px;
-background:#0f0f0f;
-border-bottom:1px solid #222;
+}
+
+.login-box{
+background:#0b0b0b;
+padding:40px;
+border-radius:10px;
+border:1px solid red;
+box-shadow:0 0 20px red;
+text-align:center;
+width:280px;
+}
+
+.login-box h2{
+color:#ff2b2b;
+margin-bottom:20px;
+}
+
+/* INPUT */
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:5px;
+background:#111;
+color:white;
+}
+
+/* BOTÃO */
+
+button{
+width:100%;
+padding:12px;
+background:#ff0000;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* PAINEL */
+
+.painel{
+display:none;
+}
+
+/* MENU */
+
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#0b0b0b;
+border-right:1px solid red;
+transition:0.3s;
+padding-top:60px;
+z-index:1000;
+}
+
+.sidebar a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+border-bottom:1px solid #111;
+cursor:pointer;
+}
+
+.sidebar a:hover{
+background:#1a0000;
+}
+
+.sidebar.ativo{
+left:0;
+}
+
+/* TOPO */
+
+.topo{
+display:flex;
+align-items:center;
+padding:20px;
+border-bottom:1px solid rgba(255,0,0,0.2);
+}
+
+.menu-btn{
+font-size:26px;
+cursor:pointer;
+margin-right:15px;
 }
 
 .logo{
-font-size:22px;
+font-size:28px;
 font-weight:bold;
-color:#ff003c;
+color:#ff2b2b;
+text-shadow:0 0 15px #ff0000;
 }
 
-nav a{
-margin-left:20px;
-text-decoration:none;
-color:white;
-opacity:0.8;
+/* CONTAINER */
+
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
 }
 
-nav a:hover{
-opacity:1;
-}
-
-/* HERO */
-
-.hero{
-text-align:center;
-padding:120px 20px;
-}
-
-.hero h1{
-font-size:65px;
-color:#ff003c;
-}
-
-.hero p{
-margin-top:10px;
-opacity:0.7;
-}
-
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 30px;
-background:#ff003c;
-border-radius:6px;
-text-decoration:none;
-color:white;
-}
-
-/* FEATURES */
-
-.features{
-padding:80px 60px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+/* CARD */
 
 .card{
-background:#141414;
+background:#0b0b0b;
+border-radius:15px;
 padding:25px;
-border-radius:10px;
-border:1px solid #222;
+border:1px solid rgba(255,0,0,0.2);
+box-shadow:0 0 20px rgba(255,0,0,0.2);
 }
 
-/* PRODUCTS */
+/* TITULO */
 
-.products{
-padding:80px 60px;
-text-align:center;
+.titulo{
+font-size:20px;
+letter-spacing:2px;
+color:#ff3b3b;
+text-shadow:0 0 10px #ff0000;
+margin-bottom:20px;
 }
 
-.product-box{
-display:inline-block;
-background:#141414;
-padding:30px;
-border-radius:10px;
-margin:15px;
-width:250px;
+/* SEÇÕES */
+
+.section{
+display:none;
+}
+
+.section.ativa{
+display:block;
+}
+
+/* PASSOS */
+
+.passo{
+display:flex;
+margin-bottom:20px;
+}
+
+.numero{
+min-width:35px;
+height:35px;
+border-radius:50%;
+background:#140000;
+border:1px solid #ff2b2b;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#ff2b2b;
+margin-right:15px;
+}
+
+.texto{
+line-height:1.5;
 }
 
 /* DOWNLOAD */
 
-.download{
-padding:100px 20px;
-text-align:center;
-background:#0f0f0f;
-}
-
-/* FOOTER */
-
-footer{
-padding:30px;
-text-align:center;
-opacity:0.5;
+.download-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#ff0000;
+border-radius:6px;
+text-decoration:none;
+color:white;
 }
 
 </style>
@@ -129,82 +203,163 @@ opacity:0.5;
 
 <body>
 
-<nav>
+<!-- LOGIN -->
 
-<div class="logo">Fatality Cheats</div>
+<div class="login" id="login">
 
-<div>
-<a href="#">Home</a>
-<a href="#">Features</a>
-<a href="#">Products</a>
-<a href="#">Download</a>
-<a href="#">Discord</a>
+<div class="login-box">
+
+<h2>EVOM</h2>
+
+<input type="text" id="user" placeholder="Usuário">
+<input type="password" id="pass" placeholder="Senha">
+
+<button onclick="logar()">Entrar</button>
+
+</div>
 </div>
 
-</nav>
+<!-- MENU -->
 
-<section class="hero">
+<div class="sidebar" id="menu">
 
-<h1>Fatality Cheats</h1>
+<a onclick="mostrar('dashboard')">Dashboard</a>
+<a onclick="mostrar('download')">Download</a>
+<a onclick="mostrar('tutoriais')">Tutoriais</a>
+<a onclick="mostrar('funcoes')">Funções</a>
+<a onclick="logout()">Sair</a>
 
-<p>Best iOS bypass and cheats</p>
+</div>
 
-<a class="btn" href="#">Download</a>
+<!-- PAINEL -->
 
-</section>
+<div class="painel" id="painel">
 
-<section class="features">
+<div class="topo">
+<div class="menu-btn" onclick="abrirMenu()">☰</div>
+<div class="logo">EVOM</div>
+</div>
+
+<div class="container">
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="section ativa">
 
 <div class="card">
-<h3>Undetected</h3>
-<p>Advanced bypass system.</p>
+
+<div class="titulo">EVOM DASHBOARD</div>
+
+<p>Bem-vindo ao painel EVOM.</p>
+<p>Acesse o menu lateral para navegar.</p>
+
 </div>
+</div>
+
+<!-- DOWNLOAD -->
+
+<div id="download" class="section">
 
 <div class="card">
-<h3>Fast Injection</h3>
-<p>Optimized for performance.</p>
+
+<div class="titulo">DOWNLOAD</div>
+
+<p>Baixe a versão mais recente:</p>
+
+<a class="download-btn" href="#">Baixar EVOM</a>
+
 </div>
+</div>
+
+<!-- TUTORIAIS -->
+
+<div id="tutoriais" class="section">
 
 <div class="card">
-<h3>Regular Updates</h3>
-<p>Constantly updated.</p>
+
+<div class="titulo">TUTORIAL</div>
+
+<div class="passo">
+<div class="numero">1</div>
+<div class="texto">Feche o jogo completamente</div>
 </div>
 
-</section>
-
-<section class="products">
-
-<h2>Products</h2>
-
-<div class="product-box">
-<h3>Free Version</h3>
-<p>Basic features</p>
-<a class="btn" href="#">Download</a>
+<div class="passo">
+<div class="numero">2</div>
+<div class="texto">Abra EVOM</div>
 </div>
 
-<div class="product-box">
-<h3>Premium</h3>
-<p>All features unlocked</p>
-<a class="btn" href="#">Buy</a>
+<div class="passo">
+<div class="numero">3</div>
+<div class="texto">Execute o bypass</div>
 </div>
 
-</section>
+</div>
+</div>
 
-<section class="download">
+<!-- FUNÇÕES -->
 
-<h2>Download</h2>
+<div id="funcoes" class="section">
 
-<p>Install the latest version</p>
+<div class="card">
 
-<a class="btn" href="#">Download Now</a>
+<div class="titulo">FUNÇÕES</div>
 
-</section>
+<p>Lista de funções disponíveis:</p>
 
-<footer>
+<ul>
+<li>Aimbot</li>
+<li>ESP</li>
+<li>No recoil</li>
+<li>Bypass anti-ban</li>
+</ul>
 
-© 2026 Fatality Cheats
+</div>
+</div>
 
-</footer>
+</div>
+
+</div>
+
+<script>
+
+function logar(){
+
+let user=document.getElementById("user").value
+let pass=document.getElementById("pass").value
+
+if(user=="evom" && pass=="client"){
+
+document.getElementById("login").style.display="none"
+document.getElementById("painel").style.display="block"
+
+}else{
+alert("Login inválido")
+}
+
+}
+
+function abrirMenu(){
+document.getElementById("menu").classList.toggle("ativo")
+}
+
+function logout(){
+location.reload()
+}
+
+function mostrar(sec){
+
+let sections=document.querySelectorAll(".section")
+
+sections.forEach(s=>{
+s.classList.remove("ativa")
+})
+
+document.getElementById(sec).classList.add("ativa")
+
+}
+
+</script>
 
 </body>
 </html>
