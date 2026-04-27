@@ -260,18 +260,32 @@ function abrirFreeFire() {
   btn.innerText = "Abrindo...";
   btn.disabled = true;
 
+  let abriu = false;
+
+  // Se sair da página, significa que abriu o app
+  window.addEventListener("blur", () => {
+    abriu = true;
+  });
+
+  // tenta abrir Free Fire normal
   window.location.href = "freefire://";
 
+  // fallback para MAX
   setTimeout(() => {
-    window.location.href = "freefiremax://";
+    if (!abriu) {
+      window.location.href = "freefiremax://";
+    }
   }, 1500);
 
+  // fallback final App Store
   setTimeout(() => {
-    window.location.href = "https://apps.apple.com/br/app/free-fire/id1300146617";
+    if (!abriu) {
+      window.location.href = "https://apps.apple.com/br/app/free-fire/id1300146617";
+    }
   }, 3000);
 
   setTimeout(() => {
-    btn.innerText = "Injetar";
+    btn.innerText = "Injetar No Jogo";
     btn.disabled = false;
   }, 4000);
 }
