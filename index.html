@@ -1,189 +1,254 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VETRIX PANEL</title>
 
-<title>EVOM</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1a0000, #000);
+  color: white;
+}
 
-<link rel="stylesheet" href="style.css">
+/* LOGIN */
+#loginBox {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.login-container {
+  width: 90%;
+  max-width: 320px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid red;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 0 25px red, inset 0 0 15px rgba(255,0,0,0.2);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.6s ease;
+}
+
+.login-container h2 {
+  color: red;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px red;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #111;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, red, #700000);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 15px red;
+  cursor: pointer;
+}
+
+/* PAINEL */
+#painel {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 380px;
+  margin: auto;
+  background: rgba(0,0,0,0.85);
+  padding: 18px;
+  border-radius: 14px;
+  border: 2px solid red;
+  box-shadow: 0 0 20px red;
+}
+
+h3 {
+  color: red;
+  text-shadow: 0 0 10px red;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(red, #700000);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+.sliderBox {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.slider {
+  width: 100%;
+  accent-color: red;
+}
+
+.label {
+  color: red;
+  font-weight: bold;
+}
+
+#fpsValue, #lagValue {
+  font-size: 12px;
+  color: #ccc;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(15px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
 
 <body>
 
 <!-- LOGIN -->
+<div id="loginBox">
+  <div class="login-container">
+    <h2>VETRIX</h2>
+    <p class="subtitle">Acesso ao painel</p>
 
-<div class="login" id="login">
-
-<div class="login-box">
-
-<h2 class="login-title">EVOM</h2>
-
-<input type="text" id="user" placeholder="Usuário">
-<input type="password" id="pass" placeholder="Senha">
-
-<button onclick="logar()">Entrar</button>
-
-</div>
-
-</div>
-
-<!-- MENU LATERAL -->
-
-<div class="sidebar" id="sidebar">
-
-<div class="menu-title">EVOM</div>
-
-<a onclick="abrirAba('dashboard')">Inicio</a>
-<a onclick="abrirAba('download')">Download Bypass</a>
-<a onclick="abrirAba('tutorial')">Tutoriais</a>
-<a onclick="abrirAba('funcoes')">Funções</a>
-<a onclick="logout()">Sair</a>
-
+    <input type="password" id="senha" placeholder="Digite a senha">
+    <button onclick="login()">ENTRAR</button>
+  </div>
 </div>
 
 <!-- PAINEL -->
+<div id="painel">
+  <div class="container">
+    
+    <h3>VETRIX SENSI PANEL</h3>
 
-<div class="painel" id="painel">
+    <p id="device"></p>
 
-<!-- TOPO -->
+    <button class="button" onclick="otimizarBasico()">Otimização Básica</button>
+    <button class="button" onclick="otimizarAvancado()">Otimização Avançada</button>
 
-<div class="topo">
+    <div class="sliderBox">
+      <p class="label">FPS do Free Fire</p>
+      <input type="range" min="1" max="240" value="60" class="slider" id="fpsRange" oninput="updateFPS()">
+      <p id="fpsValue">FPS: 60</p>
+    </div>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="sliderBox">
+      <p class="label">Input Lag</p>
+      <input type="range" min="0" max="100" value="0" class="slider" id="lagRange" oninput="updateLag()">
+      <p id="lagValue">Delay: 0%</p>
+    </div>
 
-<div class="logo">EVOM BYPASS</div>
+    <button class="button" onclick="aplicarConfigs()">Aplicar configurações</button>
 
+    <button class="button" onclick="abrirFreeFire()">ABRIR FREE FIRE</button>
+
+  </div>
 </div>
 
-<div class="container">
+<script>
+function login() {
+  let senha = document.getElementById("senha").value;
 
-<!-- DASHBOARD -->
+  if (senha === "VETRIX00") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("painel").style.display = "block";
 
-<div class="aba ativa" id="dashboard">
+    document.getElementById("device").innerText = "Dispositivo: " + navigator.userAgent;
+  } else {
+    alert("Senha incorreta!");
+  }
+}
 
-<div class="card">
+function updateFPS() {
+  let fps = document.getElementById("fpsRange").value;
+  document.getElementById("fpsValue").innerText = "FPS: " + fps;
+}
 
-<!-- LOGO -->
+function updateLag() {
+  let lag = document.getElementById("lagRange").value;
+  document.getElementById("lagValue").innerText = "Delay: " + lag + "%";
+}
 
-<div class="dashboard-logo">
+function otimizarBasico() {
+  let btn = event.target;
+  btn.innerText = "Executando...";
+  btn.disabled = true;
 
-<img src="logo.png" alt="EVOM">
+  setTimeout(() => {
+    btn.innerText = "Básica Feita ✓";
+    btn.disabled = false;
+  }, 2000);
+}
 
-</div>
+function otimizarAvancado() {
+  let btn = event.target;
+  btn.innerText = "Otimizando...";
+  btn.disabled = true;
 
-<h3>EVOM REMOTE</h3>
+  setTimeout(() => {
+    btn.innerText = "Avançada Aplicada ✓";
+    btn.disabled = false;
+  }, 2500);
+}
 
-<p>Obrigado por ser um cliente EVOM.</p>
+function aplicarConfigs() {
+  let btn = event.target;
+  btn.innerText = "Aplicando...";
+  btn.disabled = true;
 
-<p class="info">
-Sistema exclusivo para clientes.
-Utilize o menu lateral para acessar downloads, tutoriais e funções.
-</p>
+  setTimeout(() => {
+    btn.innerText = "Configurações Aplicadas ✓";
+    btn.disabled = false;
+  }, 2000);
+}
 
-</div>
+function abrirFreeFire() {
+  let btn = event.target;
+  btn.innerText = "Abrindo...";
+  btn.disabled = true;
 
-</div>
+  window.location.href = "freefire://";
 
-<!-- DOWNLOAD -->
+  setTimeout(() => {
+    window.location.href = "freefiremax://";
+  }, 1500);
 
-<div class="aba" id="download">
+  setTimeout(() => {
+    window.location.href = "https://apps.apple.com/br/app/free-fire/id1300146617";
+  }, 3000);
 
-<div class="card">
-
-<h3>DOWNLOAD CONNECT EVOM</h3>
-
-<p class="desc">
-Clique no botão abaixo para instalar o bypass.
-</p>
-
-<a class="download-btn" href="DOWLOAD/EVOM-REMOTE.pem">
-INSTALAR CERTIFICADO
-</a>
-
-<p class="obs">
-Permita a instalação do perfil ao clicar.
-</p>
-
-</div>
-
-</div>
-
-<!-- TUTORIAL -->
-
-<div class="aba" id="tutorial">
-
-<div class="card">
-
-<h3>Tutorial de Instalação</h3>
-
-<div class="passo">
-<div class="numero">1</div>
-<div class="texto">
-Baixe o certificado.
-</div>
-</div>
-
-<div class="passo">
-<div class="numero">2</div>
-<div class="texto">
-Acesse Ajustes → Geral → Gestão de VPN e Dispositivo e instale o perfil.
-</div>
-</div>
-
-<div class="passo">
-<div class="numero">3</div>
-<div class="texto">
-Vá em Ajustes → Geral → Sobre → Certificados Confiáveis e permita o certificado.
-</div>
-</div>
-
-<div class="passo">
-<div class="numero">4</div>
-<div class="texto">
-Vá em Wi-Fi → Informações → Configurar Proxy → Manual e coloque o servidor e porta.
-</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- FUNÇÕES -->
-
-<div class="aba" id="funcoes">
-
-<div class="card">
-
-<h3>FUNÇÕES E SERVIDORES</h3>
-
-<div class="server-box">
-
-<p><b>Servidor:</b> 72.61.63.176</p>
-
-</div>
-
-<h4>Portas</h4>
-
-<ul class="portas">
-
-<li>HS RAGE + ANTENA → 1000</li>
-<li>BYPASS HISTÓRICO → 2000</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
+  setTimeout(() => {
+    btn.innerText = "ABRIR FREE FIRE";
+    btn.disabled = false;
+  }, 4000);
+}
+</script>
 
 </body>
 </html>
