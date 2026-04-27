@@ -2,8 +2,18 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>VETRIX PANEL</title>
+
+<!-- ÍCONE / PWA -->
+<link rel="apple-touch-icon" href="icon.PNG">
+<link rel="icon" type="image/png" href="icon.PNG">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VETRIX">
+<meta name="theme-color" content="#000000">
 
 <style>
 body {
@@ -99,6 +109,7 @@ h3 {
   border: none;
   color: white;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .sliderBox {
@@ -179,10 +190,26 @@ function login() {
     document.getElementById("loginBox").style.display = "none";
     document.getElementById("painel").style.display = "block";
 
-    document.getElementById("device").innerText = "Dispositivo: " + navigator.userAgent;
+    document.getElementById("device").innerText = "Dispositivo: " + getDeviceInfo();
   } else {
     alert("Senha incorreta!");
   }
+}
+
+function getDeviceInfo() {
+  let ua = navigator.userAgent;
+
+  let iosVersion = "Desconhecido";
+  let match = ua.match(/OS (\\d+_\\d+)/);
+
+  if (match) {
+    iosVersion = match[1].replace("_", ".");
+  }
+
+  if (/iPhone/.test(ua)) return "iPhone | iOS " + iosVersion;
+  if (/iPad/.test(ua)) return "iPad | iOS " + iosVersion;
+
+  return "Dispositivo não identificado";
 }
 
 function updateFPS() {
@@ -244,7 +271,7 @@ function abrirFreeFire() {
   }, 3000);
 
   setTimeout(() => {
-    btn.innerText = "ABRIR FREE FIRE";
+    btn.innerText = "Injetar";
     btn.disabled = false;
   }, 4000);
 }
